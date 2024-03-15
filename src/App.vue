@@ -1,18 +1,16 @@
+<script>
+</script>
+
+
 <template>
-  <v-app>
-    <v-main>
+  <v-app id="app">
       <router-view/>
-    </v-main>
   </v-app>
 </template>
 
-<script>
-
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
+<style>
+#app {
+  font-family: "Roboto", "Homemade Apple", Arial, Helvetica, sans-serif;
 }
-</script>
+</style>
+
