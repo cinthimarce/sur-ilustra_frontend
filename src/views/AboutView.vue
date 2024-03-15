@@ -1,5 +1,15 @@
+<script setup>
+import MainLayout from '@/layouts/MainLayout.vue'
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <MainLayout>
+    <template #main>
+      <h1>Soy  el about</h1>
+    </template>
+  </MainLayout>
 </template>
+
+<style scoped>
+  
+</style>

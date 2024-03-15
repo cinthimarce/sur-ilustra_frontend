@@ -1,18 +1,15 @@
+<script setup>
+import MainLayout from "@/layouts/MainLayout.vue";
+</script>
+
 <template>
-  <HelloWorld />
+  <MainLayout>
+    <template #main>
+      <h1>Soy la vista home</h1>
+    </template>
+  </MainLayout>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
+<style scoped>
 
-// Components
-import HelloWorld from '../components/HelloWorld.vue';
-
-export default defineComponent({
-  name: 'HomeView',
-
-  components: {
-    HelloWorld,
-  },
-});
-</script>
+</style>
