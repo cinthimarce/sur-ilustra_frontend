@@ -22,6 +22,11 @@ const routes = [
     component: IlustrationView
   },
   {
+    path: '/ilustraciones/:nombre',
+    name: 'ilustrationsDetails',
+    component: () => import('@/views/IlustrationDetailView.vue')
+  },
+  {
     path: '/avecillas',
     name: 'avecillas',
     component: AvecillasView

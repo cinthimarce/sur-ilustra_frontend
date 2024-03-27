@@ -1,4 +1,12 @@
-<script>
+<script setup>
+import { useGaleryStore } from './stores/galery.js'
+import { onMounted } from 'vue'
+
+const galeryStore = useGaleryStore()
+console.log(galeryStore.products)
+onMounted(() =>{
+  galeryStore.getProducts()
+})
 </script>
 
 

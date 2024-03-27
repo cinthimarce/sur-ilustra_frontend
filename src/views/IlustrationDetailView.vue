@@ -1,12 +1,13 @@
 <script setup>
 import MainLayout from '@/layouts/MainLayout.vue';
-import IlustrationComp from '@/components/gallery/IlustrationComp.vue';
+import IlustrationDetails from '@/components/galleryDetails/IlustrationDetails.vue'
+
 </script>
 
 <template>
     <MainLayout>
-        <template #main >
-            <IlustrationComp/>
+        <template #main>
+            <IlustrationDetails/>
         </template>
     </MainLayout>
 </template>
