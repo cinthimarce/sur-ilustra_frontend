@@ -12,8 +12,8 @@ export const useGaleryStore = defineStore('galery',{
     },
     actions: {
         async getProducts(){
-            try {
-                const queryProducts = await axios.get('https://fakestoreapi.com/products')
+            try { 
+                const queryProducts = await axios.get('http://127.0.0.1:8000/productos')
                 const dataProducts = await queryProducts.data
                 //console.log(dataProducts)
                 dataProducts.forEach(element => {
