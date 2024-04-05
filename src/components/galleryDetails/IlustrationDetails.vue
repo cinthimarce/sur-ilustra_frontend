@@ -54,7 +54,7 @@ const rutas = [
 
     
 ];
-
+//Manejo del toogleButton
 const marcoAgregado = ref(false)
 
 const priceText = computed(() =>{
@@ -118,7 +118,7 @@ onMounted(() => {
         if (ilustracionStorage.value) {
             ilustraciones.value = JSON.parse(ilustracionStorage.value);
         } else {
-            ilustraciones.value = galeriaStore.etIlustrationByTitle(nameIlustracion);
+            ilustraciones.value = galeriaStore.getIlustrationByTitle(nameIlustracion);
             ilustracionStorage.value = JSON.stringify(ilustraciones.value)
         }
     } catch (error) {

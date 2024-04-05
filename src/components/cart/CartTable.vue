@@ -1,6 +1,6 @@
 <script setup>
 import { useCartStore } from "@/stores/cart";
-import { ref, computed } from 'vue'
+import { ref, computed,onMounted,onUpdated } from 'vue'
 import { formatCurrency } from "../base/FormatCurrent.js";
 
 const dialogDelete = ref(false);
@@ -46,6 +46,12 @@ const deleteItemConfirm = () => {
     cartStore.removeProductCart({ id: deleteId.value, withFrame: deleteWithFrame.value });
     dialogDelete.value = false
 };
+onMounted(() =>{
+    console.log(cartStore.getCartList)
+})
+onUpdated(() =>{
+    console.log(cartStore.getCartList)
+})
 
 </script>
 
