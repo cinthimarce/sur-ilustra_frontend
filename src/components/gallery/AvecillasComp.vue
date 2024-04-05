@@ -5,7 +5,7 @@ import BreadcrumbsComp from './base/BreadcrumbsComp.vue';
 import { useRouter } from 'vue-router';
 // Reactive Values
 const galeriaStore = useGaleryStore()
-const ilustrations = galeriaStore.ilustrationes;
+const avecillas = galeriaStore.avecillasState;
 const route = useRouter()
 const rutas = [
     {
@@ -31,7 +31,7 @@ const redirectIlustrations = (nombre) => {
 <template>
     <v-container>
         <BreadcrumbsComp :rutas="rutas"/>
-        <BaseGalery :productos="ilustrations" @redirect-to="redirectIlustrations"/>
+        <BaseGalery :productos="avecillas" @redirect-to="redirectIlustrations"/>
     </v-container>
 </template>
 

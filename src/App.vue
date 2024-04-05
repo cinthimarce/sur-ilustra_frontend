@@ -3,9 +3,10 @@ import { useGaleryStore } from './stores/galery.js'
 import { onMounted } from 'vue'
 
 const galeryStore = useGaleryStore()
-console.log(galeryStore.products)
+console.log(galeryStore.ilustrationes)
 onMounted(() =>{
-  galeryStore.getProducts()
+  galeryStore.getIlustrations()
+  galeryStore.getIAvecillas()
 })
 </script>
 

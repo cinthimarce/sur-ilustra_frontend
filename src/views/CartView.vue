@@ -1,12 +1,12 @@
 <script setup>
-import MainLayout from '@/layouts/MainLayout.vue';
-import AvecillasComp from '@/components/gallery/AvecillasComp.vue'
+import MainLayout from '../layouts/MainLayout.vue'
+import CartComp from '@/components/cart/CartComp.vue'
 </script>
 
 <template>
     <MainLayout>
         <template #main>
-            <AvecillasComp/>
+            <CartComp/>
         </template>
     </MainLayout>
 </template>

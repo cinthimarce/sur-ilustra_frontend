@@ -1,11 +1,11 @@
 <script setup>
 
 import { ref, defineProps } from 'vue'
-//import { useCartStore } from '@/stores/cart.js'
+import { useCartStore } from '@/stores/cart.js'
 import { useRouter } from 'vue-router';
 
 const tab = ref(null)
-//const cartStore = useCartStore()
+const cartStore = useCartStore()
 const route = useRouter()
 
 const props = defineProps({
@@ -33,8 +33,8 @@ const redirectHome = () =>{
                         }}</v-tab>
                 </v-tabs>
 
-                <v-badge  color="primary">
-                    <v-btn icon="mdi:mdi-cart"></v-btn>
+                <v-badge :content="cartStore.cartTotalProducts" color="primary">
+                    <v-btn icon="mdi:mdi-cart" to="/cart"></v-btn>
                 </v-badge>
 
             </v-row>

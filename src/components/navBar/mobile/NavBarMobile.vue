@@ -33,11 +33,8 @@
             </v-app-bar-nav-icon>
             <v-spacer></v-spacer>
             <v-row class="d-flex justify-space-around pl-16">
-                <!-- <v-icon color="primary"> mdi-cart</v-icon> -->
-                <!-- <h3 class="logo-text pt-3">Humberto Vera</h3> -->
                 <v-img src="@/assets/banner/logowhite.png" max-height="50" max-width="100" @click="redirectHome"></v-img>
             </v-row>
-            <!-- <v-app-bar-title>Sur Ilustra</v-app-bar-title> -->
         </v-toolbar>
         <!-- NavBar Mobile Toolbar - MdiMenu navicon-->
     </div>
