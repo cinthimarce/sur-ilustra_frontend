@@ -33,6 +33,11 @@ const routes = [
     component: AvecillasView
   },
   {
+    path: '/avecillas/:nombre',
+    name: 'avecillasDetails',
+    component: () => import('@/views/AvecillasDetailView.vue')
+  },
+  {
     path: '/contacto',
     name: 'contacto',
     component: ContactView

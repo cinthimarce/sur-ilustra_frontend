@@ -44,6 +44,10 @@ export const useGaleryStore = defineStore('galery',{
         getIlustrationByTitle(nombre){
             return this.ilustratiosState.find(prod => prod.nombre == nombre)
           },
+        
+        getAvecillasByTitle(nombre){
+            return this.avecillasState.find(prod => prod.nombre == nombre)
+        }
 
     }
 })

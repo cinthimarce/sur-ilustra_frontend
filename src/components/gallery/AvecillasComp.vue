@@ -20,7 +20,7 @@ const rutas = [
 ]
 const redirectIlustrations = (nombre) => {
     route.push({
-        name:'ilustrationsDetails',
+        name:'avecillasDetails',
         params: { nombre },
         // query: { id }
     })
