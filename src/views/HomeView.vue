@@ -1,11 +1,12 @@
 <script setup>
 import MainLayout from "@/layouts/MainLayout.vue";
+import CarruselComp from "@/components/home/CarruselComp.vue";
 </script>
 
 <template>
   <MainLayout>
     <template #main>
-      <h1>Soy la vista home</h1>
+      <CarruselComp/>
     </template>
   </MainLayout>
 </template>

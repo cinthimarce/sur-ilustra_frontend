@@ -3,7 +3,7 @@ import { useGaleryStore } from './stores/galery.js'
 import { onMounted } from 'vue'
 
 const galeryStore = useGaleryStore()
-console.log(galeryStore.ilustrationes)
+// console.log(galeryStore.ilustrationes)
 onMounted(() =>{
   galeryStore.getIlustrations()
   galeryStore.getIAvecillas()
