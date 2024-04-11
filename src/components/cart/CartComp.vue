@@ -13,7 +13,7 @@ onUpdated(() => {
 </script>
 
 <template>
-     <v-container>
+    <v-container>
         <v-row justify-center>
             <v-col align-center>
                 <CartTitle/>

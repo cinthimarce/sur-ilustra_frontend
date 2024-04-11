@@ -103,9 +103,9 @@ onUpdated(() =>{
             </v-card-actions>
         </v-card>
     </v-dialog>
-    <v-card-actions class="justify-center">
+    <!-- <v-card-actions class="justify-center">
         <v-btn class="color-bg-cart px-6 mb-4 ml-1" variant="text" color="septenary"> Pagar </v-btn>
-        </v-card-actions>
+    </v-card-actions> -->
 </template>
 
 
