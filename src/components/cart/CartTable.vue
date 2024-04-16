@@ -56,10 +56,10 @@ const deleteItemConfirm = () => {
 </script>
 
 <template>
-    <v-table class="my-4">
+    <v-table class="my-4" elevation="0">
         <thead>
             <tr>
-                <th class="text-center text-table-head pr-16 " v-for="header in headers" :key="header.text">
+                <th class="text-center text-table-head pr-16 "  elevation="0" v-for="header in headers" :key="header.text">
                     {{ header.text }}
                 </th>
             </tr>

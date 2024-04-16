@@ -35,9 +35,16 @@
             <v-row class="d-flex justify-space-around pl-16">
                 <v-img src="@/assets/banner/logowhite.png" max-height="50" max-width="100" @click="redirectHome"></v-img>
             </v-row>
+            
+
+
         </v-toolbar>
         <!-- NavBar Mobile Toolbar - MdiMenu navicon-->
+    
+       
+
     </div>
+
 </template>
 
 <script setup>

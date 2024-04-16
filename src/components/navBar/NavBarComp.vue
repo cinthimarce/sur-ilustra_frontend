@@ -52,7 +52,7 @@ const itemsNavMobile = [
         to: "/contacto",
     },
     {
-        name: "Compras",
+        name: "Carrito",
         icon: "mdi:mdi-shopping",
         to: "/cart",
     },
