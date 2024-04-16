@@ -18,3 +18,15 @@ import { } from 'vue'
     <v-card-text class="font-weight-regular text-center font pb-6"> Ese olor a leña, a tejuela recién hecha, mezclada con la vegetación húmeda del bosque.  Las imágenes de éstas casitas, responden a cómo éstos materiales naturales una vez vivos , se transformaron en parte del mundo cultural, y como, poco a poco se van transformando nuevamente en naturaleza por el paso de los años. </v-card-text>
     </v-card>
 </template>
+
+<style scoped>
+.font {
+    font-family: 'Hepta Slab', serif !important;
+    color: #315467 !important;
+}
+.font2 {
+    font-family: 'Hepta Slab', serif !important;
+    font-size: 0.9rem;
+    color: #315467 !important;
+}
+</style>
