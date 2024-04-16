@@ -23,7 +23,7 @@ export const useGaleryStore = defineStore('galery',{
                 dataProducts.forEach(element => {
                     this.ilustrationes.push(element)
                 });
-                console.log(this.ilustrationes)
+                //console.log(this.ilustrationes)
             } catch (error) {
                 console.error("No se lograron obtener las ilustraciones", error)
             }
@@ -32,11 +32,11 @@ export const useGaleryStore = defineStore('galery',{
             try { 
                 const queryProducts = await axios.get('http://127.0.0.1:8000/productos/avecillas')
                 const dataProducts = await queryProducts.data
-                console.log(dataProducts)
+                //console.log(dataProducts)
                 dataProducts.forEach(element => {
                     this.avecillas.push(element)
                 });
-                console.log(this.avecillas)
+                //console.log(this.avecillas)
             } catch (error) {
                 console.error("No se lograron obtener las avecillas", error)
             }

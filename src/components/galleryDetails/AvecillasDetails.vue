@@ -106,7 +106,7 @@ const addProduct = (item) => {
 // Lifecycle hooks
 onMounted(() => {
     avecillas.value = galeriaStore.getAvecillasByTitle()
-    console.log(avecillas.value)
+    //console.log(avecillas.value)
 
     // Actualizar los datos de las avecillas desde la tienda si no están en el almacenamiento local
     try {

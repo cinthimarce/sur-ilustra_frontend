@@ -111,7 +111,7 @@ const addProduct = (item) =>{
 // Lifecycle hooks
 onMounted(() => {
     ilustraciones.value = galeriaStore.getIlustrationByTitle(nameIlustracion)
-    console.log(ilustraciones.value)
+    //console.log(ilustraciones.value)
 
     // Actualizar los datos de las Ilustraciones desde la tienda si no están en el almacenamiento local
     try {
