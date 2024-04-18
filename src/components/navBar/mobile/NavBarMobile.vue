@@ -18,12 +18,16 @@
                     <template v-slot:prepend>
                         <v-icon :icon="item.icon"></v-icon>
                     </template>
-
                     <v-list-item-title class="sub-titulo">{{
                         item.name
                     }}</v-list-item-title>
                 </v-list-item>
+                <v-badge v-for="(index) in listStore" :key="index" :content="cartStore.cartTotalProducts" 
+                color="primary" 
+                class=" pl-7 mb-5 over">
+                </v-badge>
             </v-list>
+
             <!-- Hover Menu Mobile -->
         </v-navigation-drawer>
 
@@ -49,10 +53,13 @@
 
 <script setup>
 
-
-import { ref, defineProps } from 'vue'
+import { useCartStore } from "@/stores/cart";
 import { useRouter } from 'vue-router';
+import { computed } from 'vue'
+import { ref, defineProps } from 'vue'
 
+const cartStore = useCartStore()
+const listStore = computed(() => cartStore.getCartList)
 const route = useRouter()
 const drawer = ref(false)
 const props =defineProps({
@@ -91,5 +98,8 @@ font-size: 1.2rem;
 }
 .logo-left {
     color: #8AA49B !important;
+}
+.over{
+    z-index:4;
 }
 </style>

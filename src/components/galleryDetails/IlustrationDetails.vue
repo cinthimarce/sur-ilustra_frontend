@@ -176,7 +176,7 @@ onUnmounted(() => {
             </v-col>
             <!--CARD DETALLES PRODUCTOS-->
             <v-col cols="auto" order=12>
-                <v-card class="mx-auto pt-1 px-4" width="300" elevation=0>
+                <v-card class="mx-auto pt-1 px-4" width="300" elevation="0">
                     <!-- DESCRIPCIÓN DEL PRODUCTO -->
                     <CartDetails :details="ilustraciones"/>
                     <!--DETALLES DEL PRECIO-->
@@ -192,6 +192,9 @@ onUnmounted(() => {
                     <AddCartButton
                     @add-product="addProduct"
                     :ilustration="ilustraciones"/>
+                    <v-btn to="/cart" class= "d-flex justify-center mx-7 color-bg-cart color-font" elevation="0" >
+                        Ir al carrito
+                    </v-btn>
                 </v-card>
             </v-col>
         </v-row>
@@ -199,5 +202,10 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-    
+.color-bg-cart{
+    background-color: #315467;
+}
+.color-font{
+    color: #e3f26d;
+}
 </style>

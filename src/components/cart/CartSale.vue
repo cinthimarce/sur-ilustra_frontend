@@ -52,7 +52,7 @@ const listStore = computed(() => cartStore.getCartList)
                     <v-card
                     elevation="0"
                     >
-                        <v-card-text class="text-table-blue pb-1 pt-10 ">
+                        <v-card-text class="text-table-blue pb-1 pt-10">
                             {{ item.nombre}} 
                         </v-card-text>
                         <v-card-text class="pt-1 pb-10 text-table-green">
@@ -71,7 +71,7 @@ const listStore = computed(() => cartStore.getCartList)
                 <v-col cols="12" pa="6" md="2">   
                     <v-card
                     elevation="0">
-                        <v-card-text class="text-table-blue ">
+                        <v-card-text class="text-table-blue">
                             {{ formatCurrency(item.total) }}
                         </v-card-text>
                     </v-card>
@@ -80,7 +80,7 @@ const listStore = computed(() => cartStore.getCartList)
             <v-divider color="info"></v-divider>
         </template>
         <v-row>
-                <v-col cols="12" pa="6"  v-for="(index) in listStore" :key="index"
+                <v-col cols="12" pa="6" v-for="(index) in listStore" :key="index" 
                 class="d-flex justify-end"
                 >   
                     <v-card
