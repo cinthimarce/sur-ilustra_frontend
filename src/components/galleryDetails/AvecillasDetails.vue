@@ -190,4 +190,11 @@ onUnmounted(() => {
     </v-container>
 </template>
 
-<style scoped></style>
+<style scoped>
+.color-bg-cart{
+    background-color: #315467;
+}
+.color-font{
+    color: #e3f26d;
+}
+</style>
