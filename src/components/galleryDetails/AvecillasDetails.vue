@@ -181,10 +181,20 @@ onUnmounted(() => {
                     <ProductCounter :count="countProduct" @add="incrementProduct" @remove="decrementProduct" />
                     <!-- BOTTOM ADD CART-->
                     <AddCartButton @add-product="addProduct" :ilustration="avecillas" />
+                    <v-btn to="/cart" class= "d-flex justify-center mx-7 color-bg-cart color-font" elevation="0" >
+                        Ir al carrito
+                    </v-btn>
                 </v-card>
             </v-col>
         </v-row>
     </v-container>
 </template>
 
-<style scoped></style>
+<style scoped>
+.color-bg-cart{
+    background-color: #315467;
+}
+.color-font{
+    color: #e3f26d;
+}
+</style>

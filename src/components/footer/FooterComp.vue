@@ -14,7 +14,7 @@
         <v-divider></v-divider>
 
         <div class="footer-family">
-            <!-- {{ new Date().getFullYear() }} -->Desarrollado en <strong></strong> Vue3 por ® Agencia Relieve
+            <!-- {{ new Date().getFullYear() }} -->Desarrollado <strong></strong>por ® Agencia Relieve
         </div>
     </v-footer>
 </template>

@@ -1,5 +1,7 @@
 <script setup>
 import { formatCurrency } from '../base/FormatCurrent';
+import { useCartStore } from "@/stores/cart";
+import { computed } from 'vue'
 import { defineProps } from 'vue'
     // props
 defineProps({
@@ -8,6 +10,8 @@ defineProps({
 const displayWithMarco = (withFrame) => {
     return withFrame ? "Si" : "No";
 };
+const cartStore = useCartStore()
+const listStore = computed(() => cartStore.getCartList)
 </script>
 
 <template>
@@ -18,21 +22,19 @@ const displayWithMarco = (withFrame) => {
                     Detalle de compra
                 </v-card-title>
             </v-col>
-            
             <v-divider color="info"></v-divider>  
-
         </v-row >
-        <v-row>
+        <!--<v-row>
             <v-col cols="auto">
                 <v-card-title class="subtext-caudex">
                     Resumen de compra :
                 </v-card-title>
             </v-col>  
-        </v-row>
+        </v-row> -->
         <template v-for="item in products" :key="item.id" >
             <v-row align="center" justify="center" >
-                <v-col cols="8" md="2"  >
-                    <v-avatar color="primary" class="text-qty over" size="25" 
+                <v-col cols="8" md="2" class="pb-9" >
+                    <v-avatar color="primary" class="text-qty over" size="28" 
                     >
                     {{ item.quantity }}
                     </v-avatar>
@@ -46,26 +48,30 @@ const displayWithMarco = (withFrame) => {
                     > 
                     </v-card>
                 </v-col>
-                <v-col cols="4" pa="6" md="3">   
+                <v-col cols="4" md="3" >   
                     <v-card
-                    :title="item.nombre" 
                     elevation="0"
-                    class="text-table-head"
                     >
+                        <v-card-text class="text-table-blue pb-1 pt-10">
+                            {{ item.nombre}} 
+                        </v-card-text>
+                        <v-card-text class="pt-1 pb-10 text-table-green">
+                        Ilustración 21x29cm
+                        </v-card-text>
                     </v-card>
                 </v-col>
-                <v-col cols="12" pa="6" md="3">   
-                    <v-card
+                <v-col cols="12" md="3">
+                    <v-card 
                     elevation="0">
-                        <v-card-text class="text-table">
-                            Enmarcado: {{ displayWithMarco(item.withFrame )}}
+                        <v-card-text class="text-table-green">
+                            Enmarcado: {{ displayWithMarco(item.withFrame)}}
                         </v-card-text>
                     </v-card>
                 </v-col>
                 <v-col cols="12" pa="6" md="2">   
                     <v-card
                     elevation="0">
-                        <v-card-text class="text-table">
+                        <v-card-text class="text-table-blue">
                             {{ formatCurrency(item.total) }}
                         </v-card-text>
                     </v-card>
@@ -73,14 +79,15 @@ const displayWithMarco = (withFrame) => {
             </v-row>
             <v-divider color="info"></v-divider>
         </template>
-        <v-row  justify="center" >
- 
-                <v-col cols="12" pa="6" md="2">   
+        <v-row>
+                <v-col cols="12" pa="6" v-for="(index) in listStore" :key="index" 
+                class="d-flex justify-end"
+                >   
                     <v-card
-                    elevation="0">
-                        <v-card-text class="text-table">
-                            Total:
-                        </v-card-text>
+                    title="Total:" 
+                    elevation="0"
+                    class="text-table-blue">
+                    {{ formatCurrency(cartStore.cartTotalPrice) }}
                     </v-card>
                 </v-col>
             </v-row>
@@ -93,16 +100,15 @@ const displayWithMarco = (withFrame) => {
     font-family: 'Caudex', serif !important;
     font-size: 1.6rem;
 }
-.text-table {
+.text-table-green {
     color: #8AA49B !important;
     font-family: 'Hepta Slab', serif !important;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
-
-.text-table-head {
+.text-table-blue {
     color: #315467 !important;
     font-family: 'Hepta Slab', serif !important;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
 }
 .text-qty{
     color: #315467 !important;
@@ -113,7 +119,6 @@ const displayWithMarco = (withFrame) => {
     top:20px;
     left: 50px;
     z-index:2;
-
 }
 
 </style>
