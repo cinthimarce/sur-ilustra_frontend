@@ -1,7 +1,6 @@
 <script setup>
 import { formatCurrency } from '../base/FormatCurrent';
 import { useCartStore } from "@/stores/cart";
-import { computed } from 'vue'
 import { defineProps } from 'vue'
     // props
 defineProps({
@@ -11,7 +10,7 @@ const displayWithMarco = (withFrame) => {
     return withFrame ? "Si" : "No";
 };
 const cartStore = useCartStore()
-const listStore = computed(() => cartStore.getCartList)
+
 </script>
 
 <template>
@@ -80,7 +79,7 @@ const listStore = computed(() => cartStore.getCartList)
             <v-divider color="info"></v-divider>
         </template>
         <v-row>
-                <v-col cols="12" pa="6" v-for="(index) in listStore" :key="index" 
+            <v-col cols="12" pa="6" 
                 class="d-flex justify-end"
                 >   
                     <v-card
@@ -89,8 +88,8 @@ const listStore = computed(() => cartStore.getCartList)
                     class="text-table-blue">
                     {{ formatCurrency(cartStore.cartTotalPrice) }}
                     </v-card>
-                </v-col>
-            </v-row>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
