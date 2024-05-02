@@ -14,7 +14,6 @@ import { initMercadoPagoCheckout } from '@/utils/MercadoPago.js'
 const window = ref(0);
 const cartStore = useCartStore();
 const cartProducts = computed(() => cartStore.getCartList);
-const preferenceID = ref('');
 const buttonDisabled = ref(null);
 
 // Propiedad computada para determinar si el botón debe estar deshabilitado
@@ -26,23 +25,22 @@ const buttonName = computed(() => {
 
 const windowNext = async () => {
     window.value = 1
-    preferenceID.value = await initMercadoPagoCheckout(cartProducts.value)
-    console.log(preferenceID.value)
-    crearButtonMercadoPago(preferenceID.value)
+    await initMercadoPagoCheckout(cartProducts.value)
+    //crearButtonMercadoPago(preferenceID.value)
 }
 
-const crearButtonMercadoPago = async (preferenceID) =>{
-    const mp = new MercadoPago("TEST-16336147-9940-4d4b-9879-55962fa88d9f",{
-        locale: "es-CL"
-    });
-    const bricksBuilder = mp.bricks();
+// const crearButtonMercadoPago = async (preferenceID) =>{
+//     const mp = new MercadoPago("TEST-16336147-9940-4d4b-9879-55962fa88d9f",{
+//         locale: "es-CL"
+//     });
+//     const bricksBuilder = mp.bricks();
 
-    await bricksBuilder.create("wallet", "wallet_container",{
-        initialization: {
-        preferenceId: preferenceID,
-    },
-    })
-}
+//     await bricksBuilder.create("wallet", "wallet_container",{
+//         initialization: {
+//         preferenceId: preferenceID,
+//     },
+//     })
+// }
 const windowPrev = () => {
     window.value = 0
 
@@ -108,12 +106,9 @@ onMounted(() => {
                     </v-card-actions>
                 </v-col>
                 <v-col md="4">
-                    <v-card-actions class="justify-center">
-                        <v-btn class="color-bg-cart px-6 mb-4 ml-1" variant="text" color="septenary" id="checkout-btn"> Pagar </v-btn>
-                    </v-card-actions>
-                </v-col>
-                <v-col md="4">
-                    <div id="wallet_container"></div>
+                    <div id="checkoutButton">
+                        <div id="wallet_container"></div>
+                    </div>
                 </v-col>
             </v-row>
             
