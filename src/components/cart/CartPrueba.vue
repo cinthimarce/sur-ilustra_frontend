@@ -1,3 +1,4 @@
+<!-- eslint-disable no-undef -->
 <script setup>
 import { ref, computed, onUpdated, onMounted, watch } from 'vue'
 import CartTable from './CartTable.vue';
@@ -10,21 +11,37 @@ import { initMercadoPagoCheckout } from '@/utils/MercadoPago.js'
 
 
 //const length = ref(3)
-const window = ref(0)
-const cartStore = useCartStore()
-const cartProducts = computed(() => cartStore.getCartList
-)
-const buttonDisabled = ref()
+const window = ref(0);
+const cartStore = useCartStore();
+const cartProducts = computed(() => cartStore.getCartList);
+const preferenceID = ref('');
+const buttonDisabled = ref(null);
+
 // Propiedad computada para determinar si el botón debe estar deshabilitado
 
 const buttonName = computed(() => {
     return window.value === 0 ? 'Pagar' : 'Volver'
-})
+});
 
 
-const windowNext = () => {
+const windowNext = async () => {
     window.value = 1
+    preferenceID.value = await initMercadoPagoCheckout(cartProducts.value)
+    console.log(preferenceID.value)
+    crearButtonMercadoPago(preferenceID.value)
+}
 
+const crearButtonMercadoPago = async (preferenceID) =>{
+    const mp = new MercadoPago("TEST-16336147-9940-4d4b-9879-55962fa88d9f",{
+        locale: "es-CL"
+    });
+    const bricksBuilder = mp.bricks();
+
+    await bricksBuilder.create("wallet", "wallet_container",{
+        initialization: {
+        preferenceId: preferenceID,
+    },
+    })
 }
 const windowPrev = () => {
     window.value = 0
@@ -48,16 +65,17 @@ onUpdated(() => {
     // const cartStore = useCartStore()
     // cartProducts.value = cartStore.getCartList
     cartProducts.value
-    console.log(cartProducts.value);
+    //console.log(cartProducts.value);
     updateButtonState()
-    console.log(buttonDisabled.value)
+    //console.log(buttonDisabled.value)
 
 })
 onMounted(() => {
     updateButtonState()
-    console.log(cartProducts.value);
-    console.log(buttonDisabled.value);
-    initMercadoPagoCheckout(cartProducts.value)
+    
+    //console.log(cartProducts.value);
+    //console.log(buttonDisabled.value);
+    //initMercadoPagoCheckout(cartProducts.value)
     // const orderPrice = cartProducts.value.map(product => ({
     //     title: product.nombre,
     //     quantity: product.quantity,
@@ -85,7 +103,7 @@ onMounted(() => {
                     <v-card-actions class="justify-center">
                         <v-btn class="color-bg-cart px-6 mb-4 ml-1" variant="text" color="septenary"
                             @click="windowPrev"> {{
-                            buttonName }}
+                            buttonName }} 
                         </v-btn>
                     </v-card-actions>
                 </v-col>
@@ -98,6 +116,7 @@ onMounted(() => {
                     <div id="wallet_container"></div>
                 </v-col>
             </v-row>
+            
         </v-window-item>
     </v-window>
 </template>
