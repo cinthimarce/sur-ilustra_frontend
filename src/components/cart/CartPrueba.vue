@@ -1,17 +1,19 @@
 <!-- eslint-disable no-undef -->
 <script setup>
-import { ref, computed, onUpdated, onMounted, watch } from 'vue'
+import { ref, computed, onUpdated, onMounted, watch } from 'vue';
 import CartTable from './CartTable.vue';
 import CartTitle from './CartTitle.vue';
 //import ButtonPagar from './ButtonPagar.vue'
-import CartSale from './CartSale.vue'
+import CartSale from './CartSale.vue';
 //import mercadoPago from './mercadoPago.vue';
 import { useCartStore } from '@/stores/cart';
-import { initMercadoPagoCheckout } from '@/utils/MercadoPago.js'
-
+import { initMercadoPagoCheckout } from '@/utils/MercadoPago.js';
+import { createCheckoutButton } from '@/utils/CkeckoutButton.js';
+import { MercadoPagoIdPost } from '@/utils/MercadoPagoId.js';
 
 //const length = ref(3)
 const window = ref(0);
+const preferenceID = ref(null);
 const cartStore = useCartStore();
 const cartProducts = computed(() => cartStore.getCartList);
 const buttonDisabled = ref(null);
@@ -25,8 +27,14 @@ const buttonName = computed(() => {
 
 const windowNext = async () => {
     window.value = 1
-    await initMercadoPagoCheckout(cartProducts.value)
-    //crearButtonMercadoPago(preferenceID.value)
+    if(preferenceID.value != null){
+        await MercadoPagoIdPost(preferenceID.value, cartProducts.value)
+    }else{
+        preferenceID.value = await initMercadoPagoCheckout(cartProducts.value);
+    }
+    console.log(preferenceID.value)
+    //await initMercadoPagoCheckout(cartProducts.value)
+    createCheckoutButton(preferenceID.value);
 }
 
 // const crearButtonMercadoPago = async (preferenceID) =>{
