@@ -1,6 +1,7 @@
 <script setup>
     
-import {} from 'vue'
+import {onMounted} from 'vue'
+import MainLayout from '@/layouts/MainLayout.vue';
     // props
 
     // Reactive Values
@@ -10,11 +11,20 @@ import {} from 'vue'
     // Watchers
 
     // Lifecycle hooks
+    onMounted(() =>{
+        setTimeout(() => {
+            
+        }, 3000);
+    })
 
 </script>
 
 <template>
-    <h1>muchas gracias por comprar con nosotros!!</h1>
+    <MainLayout>
+        <template #main>
+            <h1>muchas gracias por comprar con nosotros!!</h1>
+        </template>
+    </MainLayout>
 </template>
 
 <style scoped>
