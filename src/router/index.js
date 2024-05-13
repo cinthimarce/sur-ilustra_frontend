@@ -5,6 +5,8 @@ import IlustrationView from '../views/IlustrationView.vue'
 import AvecillasView from '../views/AvecillasView'
 import ContactView from '../views/ContactView.vue'
 import CartView from '../views/CartView.vue'
+import CompraDenegada from '../views/CompraDenegada.vue';
+import CompraAprobada from '../views/CompraAprobada.vue';
 
 const routes = [
   {
@@ -46,7 +48,17 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: CartView
-  }
+  },
+  {
+    path: '/aprobada',
+    name: 'aprobada',
+    component: CompraAprobada
+  },
+  {
+    path: '/denegada',
+    name: 'denegada',
+    component: CompraDenegada
+  },
   
 ]
 

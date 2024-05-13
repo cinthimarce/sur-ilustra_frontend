@@ -1,4 +1,5 @@
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 export async function initMercadoPagoCheckout(cartProducts) {
 try {
@@ -9,12 +10,18 @@ try {
         price: product.price,
     })); //console.log(orderData);
     
+    const idempotencyKey = uuidv4()
     
     //enviando datos al Backend
     //debugger;
     const response = await axios.post(
         "http://127.0.0.1:8000/preference",
-        {"productos": orderData},
+        {"productos": orderData},{
+            headers: {
+                "Content-Type": "application/json",
+                "X-Idempotency-Key": idempotencyKey
+            }
+        }
         //{"id": id, "productos": orderData}
     );
 

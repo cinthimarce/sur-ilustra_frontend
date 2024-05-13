@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { v4 as uuidv4 } from "uuid";
 export async function MercadoPagoIdPost(reloadId,cartProducts){
     try {
         
@@ -10,12 +10,18 @@ export async function MercadoPagoIdPost(reloadId,cartProducts){
             price: product.price,
         })); //console.log(orderData);
         
-        
+        const idempotencyKey = uuidv4()
+        //console.log(idempotencyKey)
         //enviando datos al Backend
         //debugger;
         const response = await axios.post(
             "http://127.0.0.1:8000/preference",
-            { "id": reloadId,"productos": orderData},
+            { "id": reloadId,"productos": orderData},{
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Idempotency-Key": idempotencyKey
+                }
+            }
             //{"id": id, "productos": orderData}
         );
     
