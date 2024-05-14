@@ -1,6 +1,5 @@
 <script setup>
     
-import {onMounted} from 'vue'
 import MainLayout from '@/layouts/MainLayout.vue';
     // props
 
@@ -11,11 +10,7 @@ import MainLayout from '@/layouts/MainLayout.vue';
     // Watchers
 
     // Lifecycle hooks
-    onMounted(() =>{
-        setTimeout(() => {
-            
-        }, 3000);
-    })
+   
 
 </script>
 

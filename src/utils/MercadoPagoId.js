@@ -2,8 +2,6 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 export async function MercadoPagoIdPost(reloadId,cartProducts){
     try {
-        
-  
         const orderData = cartProducts.map((product) => ({
             title: product.nombre,
             quantity: product.quantity,

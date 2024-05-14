@@ -3,15 +3,13 @@
 import { ref, computed, onUpdated, onMounted, watch } from 'vue';
 import CartTable from './CartTable.vue';
 import CartTitle from './CartTitle.vue';
-//import ButtonPagar from './ButtonPagar.vue'
 import CartSale from './CartSale.vue';
-//import mercadoPago from './mercadoPago.vue';
 import { useCartStore } from '@/stores/cart';
 import { initMercadoPagoCheckout } from '@/utils/MercadoPago.js';
 import { createCheckoutButton } from '@/utils/CkeckoutButton.js';
 import { MercadoPagoIdPost } from '@/utils/MercadoPagoId.js';
 
-//const length = ref(3)
+
 const window = ref(0);
 const preferenceID = ref(null);
 const cartStore = useCartStore();
@@ -32,23 +30,9 @@ const windowNext = async () => {
     }else{
         preferenceID.value = await initMercadoPagoCheckout(cartProducts.value);
     }
-    console.log(preferenceID.value)
-    //await initMercadoPagoCheckout(cartProducts.value)
     createCheckoutButton(preferenceID.value);
 }
 
-// const crearButtonMercadoPago = async (preferenceID) =>{
-//     const mp = new MercadoPago("TEST-16336147-9940-4d4b-9879-55962fa88d9f",{
-//         locale: "es-CL"
-//     });
-//     const bricksBuilder = mp.bricks();
-
-//     await bricksBuilder.create("wallet", "wallet_container",{
-//         initialization: {
-//         preferenceId: preferenceID,
-//     },
-//     })
-// }
 const windowPrev = () => {
     window.value = 0
 
@@ -68,26 +52,11 @@ watch(cartProducts, (newValue) => {
     }
 }, { deep: true })
 onUpdated(() => {
-    // const cartStore = useCartStore()
-    // cartProducts.value = cartStore.getCartList
     cartProducts.value
-    //console.log(cartProducts.value);
     updateButtonState()
-    //console.log(buttonDisabled.value)
-
 })
 onMounted(() => {
     updateButtonState()
-    
-    //console.log(cartProducts.value);
-    //console.log(buttonDisabled.value);
-    //initMercadoPagoCheckout(cartProducts.value)
-    // const orderPrice = cartProducts.value.map(product => ({
-    //     title: product.nombre,
-    //     quantity: product.quantity,
-    //     price: product.price
-    // }))
-    // console.log(orderPrice)
 })
 </script>
 
@@ -106,7 +75,7 @@ onMounted(() => {
             <cart-sale :products="cartProducts" />
             <v-row d-flex justify-center align-center direction="col">
                 <v-col md="4">
-                    <v-card-actions class="justify-center">
+                    <v-card-actions class="justify-center align-center mt-5">
                         <v-btn class="color-bg-cart px-6 mb-4 ml-1" variant="text" color="septenary"
                             @click="windowPrev"> {{
                             buttonName }} 
