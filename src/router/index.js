@@ -7,6 +7,7 @@ import ContactView from '../views/ContactView.vue'
 import CartView from '../views/CartView.vue'
 import CompraDenegada from '../views/CompraDenegada.vue';
 import CompraAprobada from '../views/CompraAprobada.vue';
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const routes = [
   {
@@ -59,6 +60,11 @@ const routes = [
     name: 'denegada',
     component: CompraDenegada
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+    component: NotFoundView
+  }
   
 ]
 

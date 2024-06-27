@@ -16,6 +16,7 @@ const cartStore = useCartStore();
 const cartProducts = computed(() => cartStore.getCartList);
 const buttonDisabled = ref(null);
 
+
 // Propiedad computada para determinar si el botón debe estar deshabilitado
 
 const buttonName = computed(() => {
@@ -25,12 +26,13 @@ const buttonName = computed(() => {
 
 const windowNext = async () => {
     window.value = 1
-    if(preferenceID.value != null){
+    
+    if (preferenceID.value != null) {
         await MercadoPagoIdPost(preferenceID.value, cartProducts.value)
-    }else{
+    } else {
         preferenceID.value = await initMercadoPagoCheckout(cartProducts.value);
     }
-    createCheckoutButton(preferenceID.value);
+    await createCheckoutButton(preferenceID.value);
 }
 
 const windowPrev = () => {
@@ -78,7 +80,7 @@ onMounted(() => {
                     <v-card-actions class="justify-center align-center mt-5">
                         <v-btn class="color-bg-cart px-6 mb-4 ml-1" variant="text" color="septenary"
                             @click="windowPrev"> {{
-                            buttonName }} 
+                                buttonName }}
                         </v-btn>
                     </v-card-actions>
                 </v-col>
@@ -88,7 +90,6 @@ onMounted(() => {
                     </div>
                 </v-col>
             </v-row>
-            
         </v-window-item>
     </v-window>
 </template>
